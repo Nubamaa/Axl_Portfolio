@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+    <title>Axlitoos - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #3a3a3a;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .site-container {
+        max-width: 1400px; 
+        margin: 0 auto;   
+        transform: scale(0.9); 
+        transform-origin: top center;
+        }
+
+        @media (max-width: 1400px) {
+        .site-container {
+            transform: none; 
+            width: 100%;
+            padding: 0 5%;
+             }
+        }
+
+        .bg-decoration {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.03;
+        }
+
+        .bg-decoration::before,
+        .bg-decoration::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .bg-decoration::before {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #ffffff 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+        }
+
+        .bg-decoration::after {
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, #ffffff 0%, transparent 70%);
+            bottom: -300px;
+            left: -300px;
+        }
+
+        nav {
+            padding: 1.5rem 5%;
+            background: rgba(0, 0, 0, 0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        section {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5%;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            color: #ddd;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .divider {
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            margin: 4rem auto;
+        }
+
+        .quote-section {
+            padding: 6rem 5%;
+            text-align: center;
+            position: relative;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .quote-section p {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 1.8rem;
+            color: #fff;
+            max-width: 1000px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .quote-author {
+            margin-top: 2rem;
+            font-style: normal;
+            font-size: 1.2rem;
+            color: #ccc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 5%;
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text h2 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-text strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .about-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            height: 100%;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 20px;
+        }
+
+        .about-btn {
+            display: inline-block;
+            background: #fff;
+            color: #3a3a3a;
+            padding: 1.2rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid #fff;
+            margin-top: 1rem;
+        }
+
+        .about-btn:hover {
+            background: transparent;
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Skills Section */
+        .skills-icons {
+            padding: 8rem 5%;
+            position: relative;
+        }
+
+        .skills-icons::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        }
+
+        .skills-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .skills-icons h2 {
+            font-size: 4rem;
+            margin-bottom: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .icons-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .icon-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .icon-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .icon-item span {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* Contacts Section */
+        .contacts {
+            padding: 8rem 5%;
+            position: relative;
+        }
+
+        .contacts::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        }
+
+        .contacts-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .contacts h2 {
+            font-size: 4rem;
+            margin-bottom: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .contact-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .contact-btn {
+            background: #fff;
+            color: #3a3a3a;
+            padding: 1.2rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid #fff;
+        }
+
+        .contact-btn:hover {
+            background: transparent;
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Resume & Video Section */
+        .media-section {
+            padding: 8rem 5%;
+            position: relative;
+        }
+
+        .media-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        }
+
+        .media-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .media-section h2 {
+            font-size: 4rem;
+            margin-bottom: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .media-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .media-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .media-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .media-card p {
+            color: #ccc;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            margin-bottom: 1.5rem;
+        }
+
+        .video-container video,
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        .resume-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: #fff;
+            color: #3a3a3a;
+            padding: 1.2rem 2.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #fff;
+            font-size: 1.1rem;
+        }
+
+        .resume-btn:hover {
+            background: transparent;
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .resume-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .footer {
+            padding: 3rem 5%;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 50px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+        }
+
+        @media (max-width: 968px) {
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+
+            .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 3rem;
+            align-items: start;
+            }
+
+            .about-text {
+                font-size: 1.2rem;
+                line-height: 1.9;
+            }
+
+            .about-text h2 {
+                font-size: 3.2rem;
+                font-weight: 900;
+                margin-bottom: 2rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+
+            .about-text p {
+                font-size: 1.15rem;
+                color: #ddd;
+                margin-bottom: 1.8rem;
+                line-height: 1.9;
+            }
+
+            .about-text strong {
+                color: #fff;
+                font-weight: 600;
+            }
+
+            .about-image {
+                position: relative;
+                overflow: hidden;
+                border-radius: 20px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                max-width: 100%;
+                height: 100%;
+            }
+
+            .about-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 20px;
+                display: block;
+            }
+
+            .about-btn {
+            background: #fff;
+            color: #3a3a3a;
+            padding: 1.2rem 2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid #fff;
+            display: inline-block;
+            margin-top: 1rem;
+            }
+
+            .about-btn:hover {
+            background: transparent;
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+            }
+
+            .icons-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 2rem;
+            }
+
+            .contact-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .quote-section p {
+                font-size: 1.3rem;
+            }
+
+            .about-text h2,
+            .skills-icons h2,
+            .contacts h2,
+            .media-section h2 {
+                font-size: 2.5rem;
+            }
+
+            .icons-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+
+            .icon-item img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .media-card {
+                padding: 2rem;
+            }
+
+            .media-card h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-decoration"></div>
+
+    <nav>
+        <div class="logo">Axlitoos</div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm Axl</h1>
+            <p class="subtitle">An Information Technology and an aspiring Data Analyst</p>
+            
+            <div class="divider" style="width: 60%; margin: 3rem auto;"></div>
+            
+            <div class="quote-section" style="padding: 3rem 0; background: transparent;">
+                <p>"What you get by achieving your goals is not as important as what you become by achieving them."</p>
+                <p class="quote-author">— Zig Ziglar</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="about">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>About me</h2>
+                
+                <p>I'm <strong>Jon Axl A. Arones</strong>, currently pursuing a <strong>Bachelor of Science in Information Technology</strong> majoring in <strong>Mobile Internet Technology</strong>, with an additional specialization in <strong>Analytics</strong>.</p>
+                
+                <p>I'm passionate about <strong>developing solutions</strong> that connect ideas with real-world impact. My experience spans <strong>web and mobile app development</strong> using <strong>Python, Java, and React</strong>, and I've also explored the field of <strong>Analytics</strong> through tools like <strong>Weka, Tableau, Excel, Power BI, and MongoDB</strong>.</p>
+                
+                <p>I enjoy working with data because it's the foundation of every decision and story — and I aim to turn raw information into meaningful insights that can drive innovation.</p>
+                
+                <a href="#contacts" class="about-btn">Get in Touch</a>
+            </div>
+
+            <div class="about-image">
+                <img src="assets/profile.jpg" alt="Jon Axl A. Arones">
+            </div>
+        </div>
+    </section>
+
+    <section class="skills-icons">
+        <div class="skills-container">
+            <h2>SKILLS</h2>
+            <div class="icons-grid">
+                <div class="icon-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+                    <span>Git</span>
+                </div>
+                <div class="icon-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="filter: invert(1);">
+                    <span>GitHub</span>
+                </div>
+                <div class="icon-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
+                    <span>HTML</span>
+                </div>
+                <div class="icon-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                    <span>JS</span>
+                </div>
+                <div class="icon-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
+                    <span>CSS</span>
+                </div>
+                <div class="icon-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma">
+                    <span>Figma</span>
+                </div>
+                <div class="icon-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React">
+                    <span>React</span>
+                </div>
+                <div class="icon-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                    <span>Python</span>
+                </div>
+                <div class="icon-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+                    <span>Java</span>
+                </div>
+                <div class="icon-item">
+                    <img src="https://miro.medium.com/v2/resize:fit:512/format:webp/1*fTad5TujTyKiqb6wOFY0IQ.png" alt="Weka">
+                    <span>Weka</span>
+                </div>
+                <div class="icon-item">
+                    <img src="https://cdn.worldvectorlogo.com/logos/tableau-software.svg" alt="Tableau">
+                    <span>Tableau</span>
+                </div>
+                <div class="icon-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI">
+                    <span>Power BI</span>
+                </div>
+                <div class="icon-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg" alt="Excel">
+                    <span>Excel</span>
+                </div>
+                <div class="icon-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Microsoft_Office_PowerPoint_%282019%E2%80%93present%29.svg" alt="PowerPoint">
+                    <span>PowerPoint</span>
+                </div>
+                <div class="icon-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/Microsoft_Office_Word_%282019%E2%80%93present%29.svg" alt="Word">
+                    <span>Word</span>
+                </div>
+                <div class="icon-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" alt="Canva">
+                    <span>Canva</span>
+                </div>
+                <div class="icon-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" alt="Android Studio">
+                    <span>Android Studio</span>
+                </div>
+                <div class="icon-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/notion/notion-original.svg" alt="Notion" style="filter: invert(1);">
+                    <span>Notion</span>
+                </div>
+                <div class="icon-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL">
+                    <span>SQL</span>
+                </div>
+                <div class="icon-item">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/powershell/powershell-original.svg" alt="PowerShell">
+                    <span>Power Shell</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="media-section">
+        <div class="media-container">
+            <h2>MORE ABOUT ME</h2>
+            <div class="media-grid">
+                <div class="media-card">
+                    <h3>📄 My Resume</h3>
+                    <p>Download my resume to learn more about my experience, education, and technical skills.</p>
+                    <a href="your-resume.pdf" class="resume-btn" download>
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                        Download Resume
+                    </a>
+                </div>
+
+                <div class="media-card">
+                    <h3>🎥 Video Introduction</h3>
+                    <p>Watch a short video introduction to get to know me better and hear about my journey.</p>
+                    <div class="video-container">
+                        <!-- Option 1: Upload video file and replace src -->
+                        <video controls>
+                            <source src="your-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        
+                        <!-- Option 2: Embed YouTube video (uncomment and replace VIDEO_ID) -->
+                        <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contacts" id="contacts">
+        <div class="contacts-container">
+            <div>
+                <h2>Contacts</h2>
+            </div>
+            <div class="contact-buttons">
+                <a href="https://www.linkedin.com/in/jonaxlarones" class="contact-btn">LinkedIn</a>
+                <a href="https://github.com/Nubamaa" class="contact-btn">GitHub</a>
+                <a href="mailto:axlarones@gmail.com" class="contact-btn">Gmail</a>
+                <a href="https://www.credly.com/users/jon-axl-arones.fddeff96" class="contact-btn">Credly</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Axlitoos. All rights reserved.</p>
+    </footer>
+</body>
+</html>
