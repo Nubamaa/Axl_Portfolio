@@ -4,930 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Axlitoos - Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #3a3a3a;
-            color: #fff;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .site-container {
-            max-width: 1400px; 
-            margin: 0 auto;   
-            transform: scale(0.9); 
-            transform-origin: top center;
-        }
-
-        @media (max-width: 1400px) {
-            .site-container {
-                transform: none; 
-                width: 100%;
-                padding: 0 5%;
-            }
-        }
-
-        .bg-decoration {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.03;
-        }
-
-        .bg-decoration::before,
-        .bg-decoration::after {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-        }
-
-        .bg-decoration::before {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, #ffffff 0%, transparent 70%);
-            top: -200px;
-            right: -200px;
-        }
-
-        .bg-decoration::after {
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, #ffffff 0%, transparent 70%);
-            bottom: -300px;
-            left: -300px;
-        }
-
-        nav {
-            padding: 1.5rem 5%;
-            background: rgba(0, 0, 0, 0.3);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .nav-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #ccc;
-        }
-
-        section {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 5%;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
-                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.3;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-content h1 {
-            font-size: 5rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .hero-content .subtitle {
-            font-size: 1.5rem;
-            color: #ddd;
-            margin-bottom: 3rem;
-            font-weight: 300;
-        }
-
-        .divider {
-            width: 80%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            margin: 4rem auto;
-        }
-
-        .quote-section {
-            padding: 6rem 5%;
-            text-align: center;
-            position: relative;
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .quote-section p {
-            font-family: Georgia, 'Times New Roman', serif;
-            font-style: italic;
-            font-size: 1.8rem;
-            color: #fff;
-            max-width: 1000px;
-            margin: 0 auto;
-            line-height: 1.6;
-            font-weight: 300;
-        }
-
-        .quote-author {
-            margin-top: 2rem;
-            font-style: normal;
-            font-size: 1.2rem;
-            color: #ccc;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-
-        /* About Section */
-        .about {
-            padding: 8rem 5%;
-            position: relative;
-        }
-
-        .about::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-        }
-
-        .about-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .about-text h2 {
-            font-size: 4rem;
-            font-weight: 900;
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            color: #ccc;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .about-text strong {
-            color: #fff;
-            font-weight: 600;
-        }
-
-        .about-image {
-            position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            height: 100%;
-            min-height: 400px;
-        }
-
-        .about-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            border-radius: 20px;
-        }
-
-        .about-btn {
-            display: inline-block;
-            background: #fff;
-            color: #3a3a3a;
-            padding: 1.2rem 2rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 2px solid #fff;
-            margin-top: 1rem;
-        }
-
-        .about-btn:hover {
-            background: transparent;
-            color: #fff;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
-        }
-
-        /* Projects Section */
-        .projects {
-            padding: 8rem 5%;
-            position: relative;
-        }
-
-        .projects::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-        }
-
-        .projects-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .projects h2 {
-            font-size: 4rem;
-            margin-bottom: 4rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 250px;
-            overflow: hidden;
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.05);
-        }
-
-        .project-content {
-            padding: 2rem;
-        }
-
-        .project-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .project-content p {
-            color: #ccc;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tag {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.4rem 0.8rem;
-            border-radius: 5px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: transparent;
-            color: #fff;
-            padding: 0.8rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid #fff;
-            font-size: 0.9rem;
-        }
-
-        .project-btn:hover {
-            background: #fff;
-            color: #3a3a3a;
-            transform: translateY(-2px);
-        }
-
-        /* Experience Section */
-        .experience {
-            padding: 8rem 5%;
-            position: relative;
-        }
-
-        .experience::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-        }
-
-        .experience-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .experience h2 {
-            font-size: 4rem;
-            margin-bottom: 4rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .experience-timeline {
-            position: relative;
-            padding-left: 3rem;
-        }
-
-        .experience-timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.1));
-        }
-
-        .experience-item {
-            position: relative;
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .experience-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateX(10px);
-        }
-
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            left: -3.5rem;
-            top: 2.5rem;
-            width: 15px;
-            height: 15px;
-            background: #fff;
-            border-radius: 50%;
-            border: 3px solid #3a3a3a;
-        }
-
-        .experience-date {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .experience-item h3 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .experience-company {
-            color: #ddd;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .experience-item p,
-        .experience-item ul {
-            color: #ccc;
-            line-height: 1.8;
-        }
-
-        .experience-item ul {
-            margin-left: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .experience-item li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Skills Section */
-        .skills-icons {
-            padding: 8rem 5%;
-            position: relative;
-        }
-
-        .skills-icons::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-        }
-
-        .skills-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .skills-icons h2 {
-            font-size: 4rem;
-            margin-bottom: 4rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .icons-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 3rem;
-            margin-bottom: 4rem;
-        }
-
-        .icon-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            transition: transform 0.3s ease;
-        }
-
-        .icon-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .icon-item img {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-        }
-
-        .icon-item span {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        /* Contacts Section */
-        .contacts {
-            padding: 8rem 5%;
-            position: relative;
-        }
-
-        .contacts::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-        }
-
-        .contacts-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            align-items: start;
-        }
-
-        .contacts h2 {
-            font-size: 4rem;
-            margin-bottom: 3rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .contact-buttons {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .contact-btn {
-            background: #fff;
-            color: #3a3a3a;
-            padding: 1.2rem 2rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 2px solid #fff;
-        }
-
-        .contact-btn:hover {
-            background: transparent;
-            color: #fff;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
-        }
-
-        /* Resume & Video Section */
-        .media-section {
-            padding: 8rem 5%;
-            position: relative;
-        }
-
-        .media-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-        }
-
-        .media-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .media-section h2 {
-            font-size: 4rem;
-            margin-bottom: 4rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .media-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .media-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .media-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .media-card h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .media-card p {
-            color: #ccc;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 10px;
-            background: rgba(0, 0, 0, 0.3);
-            margin-bottom: 1.5rem;
-        }
-
-        .video-container video,
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-        }
-
-        .resume-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .resume-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.8rem;
-            background: #fff;
-            color: #3a3a3a;
-            padding: 1.2rem 2rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid #fff;
-            font-size: 1.1rem;
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .resume-btn:hover {
-            background: transparent;
-            color: #fff;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
-        }
-
-        .resume-btn svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .footer {
-            padding: 3rem 5%;
-            text-align: center;
-            color: #888;
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 50px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 968px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero-content h1 {
-                font-size: 3.5rem;
-            }
-
-            .about-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .about-image {
-                height: 400px;
-                min-height: 300px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .experience-timeline {
-                padding-left: 2rem;
-            }
-
-            .experience-item::before {
-                left: -2.5rem;
-            }
-
-            .contacts-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .media-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .icons-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 2rem;
-            }
-
-            .contact-buttons {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-                letter-spacing: 1px;
-            }
-
-            .hero-content .subtitle {
-                font-size: 1.1rem;
-            }
-
-            .quote-section p {
-                font-size: 1.3rem;
-            }
-
-            .about-text h2,
-            .projects h2,
-            .experience h2,
-            .skills-icons h2,
-            .contacts h2,
-            .media-section h2 {
-                font-size: 2.5rem;
-            }
-
-            .about-text p {
-                font-size: 1rem;
-            }
-
-            .about-image {
-                height: 300px;
-                min-height: 250px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .project-content h3 {
-                font-size: 1.5rem;
-            }
-
-            .experience-timeline {
-                padding-left: 1.5rem;
-            }
-
-            .experience-item {
-                padding: 1.5rem;
-            }
-
-            .experience-item::before {
-                left: -2.25rem;
-            }
-
-            .experience-item h3 {
-                font-size: 1.5rem;
-            }
-
-            .icons-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.5rem;
-            }
-
-            .icon-item img {
-                width: 60px;
-                height: 60px;
-            }
-
-            .media-card {
-                padding: 2rem;
-            }
-
-            .media-card h3 {
-                font-size: 1.5rem;
-            }
-
-            .resume-buttons {
-                flex-direction: column;
-            }
-
-            .resume-btn {
-                width: 100%;
-                justify-content: center;
-                padding: 1rem 1.5rem;
-                font-size: 1rem;
-            }
-
-            nav {
-                padding: 1rem 5%;
-            }
-
-            .logo {
-                font-size: 1.2rem;
-            }
-        }
-    </style>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='10' y='15' width='80' height='55' fill='none' stroke='%23d1d5db' stroke-width='5' rx='3'/><rect x='15' y='20' width='70' height='45' fill='%23d1d5db'/><rect x='42' y='70' width='16' height='12' fill='%23d1d5db'/><rect x='25' y='82' width='50' height='5' fill='%23d1d5db'/></svg>">
+    <link rel="stylesheet" href="layouts/styles.css">
 </head>
 <body>
     <div class="bg-decoration"></div>
@@ -967,11 +45,11 @@
             <div class="about-text">
                 <h2>About me</h2>
                 
-                <p>I'm <strong>Jon Axl A. Arones</strong>, currently pursuing a <strong>Bachelor of Science in Information Technology</strong> majoring in <strong>Mobile Internet Technology</strong>, with an additional specialization in <strong>Analytics</strong>.</p>
-                
-                <p>I'm passionate about <strong>developing solutions</strong> that connect ideas with real-world impact. My experience spans <strong>web and mobile app development</strong> using <strong>Python, Java, and React</strong>, and I've also explored the field of <strong>Analytics</strong> through tools like <strong>Weka, Tableau, Excel, Power BI, and MongoDB</strong>.</p>
-                
-                <p>I enjoy working with data because it's the foundation of every decision and story — and I aim to turn raw information into meaningful insights that can drive innovation.</p>
+                <p>I'm <strong>Jon Axl A. Arones</strong>, passionate about creating solutions that make a positive impact in the real world. I enjoy solving problems and finding new ways to improve processes, while combining creativity and logic to reach effective results.</p>
+                <p>Curiosity drives me to keep learning and exploring new ideas. Working with others and exchanging perspectives often leads to better solutions and continuous growth. Challenges are opportunities to test skills and push boundaries.</p>
+                <p>Technology and data inspire me because they have the power to simplify tasks and create meaningful change. By staying focused, dedicated, and open to new approaches, I strive to turn ideas into real, useful outcomes.</p>
+                <p>Every project and experience is a chance to learn, improve, and make a difference. I am motivated to take on challenges that help me grow both personally and professionally.</p>
+
                 
                 <a href="#contacts" class="about-btn">Get in Touch</a>
             </div>
@@ -986,94 +64,72 @@
         <div class="projects-container">
             <h2>Projects</h2>
             <div class="projects-grid">
-                <!-- Project 1 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="assets/project1.jpg" alt="Project 1">
+                        <img src="assets/digiGuesser.png" alt="Project 1">
                     </div>
                     <div class="project-content">
-                        <h3>Project Name 1</h3>
-                        <p>Brief description of your first project. Explain what problem it solves, what technologies you used, and what you learned from building it.</p>
+                        <h3>SDG Digi Guesse
+                        </h3>
+                        <p>An engaging number-guessing game where players match pairs of numbered tiles by remembering their positions.</p>
                         <div class="project-tags">
-                            <span class="tag">React</span>
+                            <span class="tag">Group Project</span>
                             <span class="tag">Python</span>
-                            <span class="tag">MongoDB</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-btn" target="_blank">
+                            <a href="https://github.com/kar1man/digiGuessr" class="project-btn" target="_blank">
                                 <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                                 </svg>
-                                GitHub
-                            </a>
-                            <a href="#" class="project-btn" target="_blank">
-                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
-                                    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
-                                </svg>
-                                Live Demo
+                                View on GitHub
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
                 <div class="project-card">
                     <div class="project-image">
                         <img src="assets/project2.jpg" alt="Project 2">
                     </div>
                     <div class="project-content">
-                        <h3>Project Name 2</h3>
-                        <p>Brief description of your second project. Highlight the key features, challenges you overcame, and the impact it had.</p>
+                        <h3>SEAT APP</h3>
+                        <p>SEAT is a transit app that provides real-time train tracking, fares, and route planning for a seamless commute with planning to implement with LRT.</p>
                         <div class="project-tags">
-                            <span class="tag">Java</span>
-                            <span class="tag">Android Studio</span>
+                            <span class="tag">Group Project</span>
+                            <span class="tag">On Going</span>
+                            <span class="tag">React</span>
                             <span class="tag">Firebase</span>
+                            <span class="tag">Html, CSS, Javascript</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-btn" target="_blank">
+                            <a href="https://github.com/APC-SoCIT/APC_2025_2026_T1_MI232_G09-SEAT" class="project-btn" target="_blank">
                                 <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                                 </svg>
-                                GitHub
-                            </a>
-                            <a href="#" class="project-btn" target="_blank">
-                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
-                                    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
-                                </svg>
-                                Live Demo
+                                View on GitHub
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 3 -->
                 <div class="project-card">
                     <div class="project-image">
                         <img src="assets/project3.jpg" alt="Project 3">
                     </div>
                     <div class="project-content">
-                        <h3>Project Name 3</h3>
-                        <p>Brief description of your third project. Share what inspired you to build it and what makes it unique or valuable.</p>
+                        <h3>From Data to Decisions: Mining Insights</h3>
+                        <p>This project turns raw data into actionable insights using WEKA for data mining and Tableau for interactive visualization, highlighting skills in analysis, interpretation, and data-driven decision-making.</p>
                         <div class="project-tags">
                             <span class="tag">Tableau</span>
                             <span class="tag">Power BI</span>
                             <span class="tag">Data Analysis</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="project-btn" target="_blank">
+                            <a href="https://github.com/Nubamaa/YOUR-REPO-NAME-HERE" class="project-btn" target="_blank">
                                 <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                                 </svg>
-                                GitHub
-                            </a>
-                            <a href="#" class="project-btn" target="_blank">
-                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
-                                    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
-                                </svg>
-                                Live Demo
+                                View on GitHub
                             </a>
                         </div>
                     </div>
@@ -1086,7 +142,6 @@
         <div class="experience-container">
             <h2>Experience</h2>
             <div class="experience-timeline">
-                <!-- Experience 1 -->
                 <div class="experience-item">
                     <span class="experience-date">January 2023 - March 2023</span>
                     <h3>Virtual Assistant - Social Media Manager</h3>
@@ -1099,7 +154,6 @@
                     </ul>
                 </div>
 
-                <!-- Experience 2 -->
                 <div class="experience-item">
                     <span class="experience-date">Month Year - Month Year</span>
                     <h3>Job Title / Role</h3>
@@ -1112,7 +166,6 @@
                     </ul>
                 </div>
 
-                <!-- Experience 3 -->
                 <div class="experience-item">
                     <span class="experience-date">Month Year - Month Year</span>
                     <h3>Job Title / Role</h3>
@@ -1224,14 +277,14 @@
                     <h3>📄 My Resume</h3>
                     <p>View or download my resume to learn more about my experience, education, and technical skills.</p>
                     <div class="resume-buttons">
-                        <a href="your-resume.pdf" class="resume-btn" target="_blank">
+                        <a href="files/aronesResume.pdf" class="resume-btn" target="_blank">
                             <svg fill="currentColor" viewBox="0 0 20 20">
                                 <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
                                 <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
                             </svg>
                             View Resume
                         </a>
-                        <a href="your-resume.pdf" class="resume-btn" download>
+                        <a href="files/aronesResume.pdf" class="resume-btn" download>
                             <svg fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
                             </svg>
@@ -1244,14 +297,10 @@
                     <h3>🎥 Video Introduction</h3>
                     <p>Watch a short video introduction to get to know me better and hear about my journey.</p>
                     <div class="video-container">
-                        <!-- Option 1: Upload video file and replace src -->
                         <video controls>
                             <source src="your-video.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
-                        
-                        <!-- Option 2: Embed YouTube video (uncomment and replace VIDEO_ID) -->
-                        <!-- <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
                     </div>
                 </div>
             </div>
@@ -1277,20 +326,16 @@
     </footer>
 
     <script>
-        // Email functionality
         document.addEventListener('DOMContentLoaded', function() {
             const emailBtn = document.querySelector('a[href^="mailto"]');
             
             emailBtn.addEventListener('click', function(e) {
                 const email = 'axlarones@gmail.com';
                 
-                // Try to open mailto
                 window.location.href = 'mailto:' + email;
                 
-                // Also copy to clipboard as backup
                 if (navigator.clipboard) {
                     navigator.clipboard.writeText(email).then(function() {
-                        // Show a temporary notification
                         const originalText = emailBtn.textContent;
                         emailBtn.textContent = 'Email Copied!';
                         setTimeout(function() {
