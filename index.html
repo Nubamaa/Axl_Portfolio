@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Axlitoos - Portfolio</title>
     <style>
         * {
@@ -22,19 +22,20 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
+
         .site-container {
-        max-width: 1400px; 
-        margin: 0 auto;   
-        transform: scale(0.9); 
-        transform-origin: top center;
+            max-width: 1400px; 
+            margin: 0 auto;   
+            transform: scale(0.9); 
+            transform-origin: top center;
         }
 
         @media (max-width: 1400px) {
-        .site-container {
-            transform: none; 
-            width: 100%;
-            padding: 0 5%;
-             }
+            .site-container {
+                transform: none; 
+                width: 100%;
+                padding: 0 5%;
+            }
         }
 
         .bg-decoration {
@@ -79,12 +80,38 @@
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
             letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ccc;
         }
 
         section {
@@ -222,6 +249,7 @@
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             height: 100%;
+            min-height: 400px;
         }
 
         .about-image img {
@@ -251,6 +279,239 @@
             color: #fff;
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 8rem 5%;
+            position: relative;
+        }
+
+        .projects::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        }
+
+        .projects-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .projects h2 {
+            font-size: 4rem;
+            margin-bottom: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .project-content p {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #fff;
+            font-size: 0.9rem;
+        }
+
+        .project-btn:hover {
+            background: #fff;
+            color: #3a3a3a;
+            transform: translateY(-2px);
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 8rem 5%;
+            position: relative;
+        }
+
+        .experience::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        }
+
+        .experience-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .experience h2 {
+            font-size: 4rem;
+            margin-bottom: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .experience-timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.5), rgba(255,255,255,0.1));
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(10px);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 2.5rem;
+            width: 15px;
+            height: 15px;
+            background: #fff;
+            border-radius: 50%;
+            border: 3px solid #3a3a3a;
+        }
+
+        .experience-date {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .experience-company {
+            color: #ddd;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .experience-item p,
+        .experience-item ul {
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        .experience-item ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.5rem;
         }
 
         /* Skills Section */
@@ -434,7 +695,7 @@
 
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             border-radius: 10px;
@@ -452,19 +713,28 @@
             border-radius: 10px;
         }
 
+        .resume-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
         .resume-btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.8rem;
             background: #fff;
             color: #3a3a3a;
-            padding: 1.2rem 2.5rem;
+            padding: 1.2rem 2rem;
             border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
             border: 2px solid #fff;
             font-size: 1.1rem;
+            flex: 1;
+            min-width: 200px;
         }
 
         .resume-btn:hover {
@@ -499,81 +769,59 @@
             background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
         }
 
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Mobile Responsive */
         @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
             .hero-content h1 {
                 font-size: 3.5rem;
             }
 
             .about-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 3rem;
-            align-items: start;
-            }
-
-            .about-text {
-                font-size: 1.2rem;
-                line-height: 1.9;
-            }
-
-            .about-text h2 {
-                font-size: 3.2rem;
-                font-weight: 900;
-                margin-bottom: 2rem;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-            }
-
-            .about-text p {
-                font-size: 1.15rem;
-                color: #ddd;
-                margin-bottom: 1.8rem;
-                line-height: 1.9;
-            }
-
-            .about-text strong {
-                color: #fff;
-                font-weight: 600;
+                grid-template-columns: 1fr;
+                gap: 3rem;
             }
 
             .about-image {
-                position: relative;
-                overflow: hidden;
-                border-radius: 20px;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-                max-width: 100%;
-                height: 100%;
+                height: 400px;
+                min-height: 300px;
             }
 
-            .about-image img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: 20px;
-                display: block;
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
 
-            .about-btn {
-            background: #fff;
-            color: #3a3a3a;
-            padding: 1.2rem 2rem;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 600;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 2px solid #fff;
-            display: inline-block;
-            margin-top: 1rem;
+            .experience-timeline {
+                padding-left: 2rem;
             }
 
-            .about-btn:hover {
-            background: transparent;
-            color: #fff;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+            .experience-item::before {
+                left: -2.5rem;
+            }
+
+            .contacts-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .media-grid {
+                grid-template-columns: 1fr;
             }
 
             .icons-grid {
@@ -589,6 +837,7 @@
         @media (max-width: 600px) {
             .hero-content h1 {
                 font-size: 2.5rem;
+                letter-spacing: 1px;
             }
 
             .hero-content .subtitle {
@@ -600,10 +849,45 @@
             }
 
             .about-text h2,
+            .projects h2,
+            .experience h2,
             .skills-icons h2,
             .contacts h2,
             .media-section h2 {
                 font-size: 2.5rem;
+            }
+
+            .about-text p {
+                font-size: 1rem;
+            }
+
+            .about-image {
+                height: 300px;
+                min-height: 250px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .experience-timeline {
+                padding-left: 1.5rem;
+            }
+
+            .experience-item {
+                padding: 1.5rem;
+            }
+
+            .experience-item::before {
+                left: -2.25rem;
+            }
+
+            .experience-item h3 {
+                font-size: 1.5rem;
             }
 
             .icons-grid {
@@ -623,6 +907,25 @@
             .media-card h3 {
                 font-size: 1.5rem;
             }
+
+            .resume-buttons {
+                flex-direction: column;
+            }
+
+            .resume-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            nav {
+                padding: 1rem 5%;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -630,7 +933,17 @@
     <div class="bg-decoration"></div>
 
     <nav>
-        <div class="logo">Axlitoos</div>
+        <div class="nav-content">
+            <div class="logo">Axlitoos</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contacts">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
     </nav>
 
     <section class="hero">
@@ -649,7 +962,7 @@
 
     <div class="divider"></div>
 
-    <section class="about">
+    <section class="about" id="about">
         <div class="about-container">
             <div class="about-text">
                 <h2>About me</h2>
@@ -669,7 +982,153 @@
         </div>
     </section>
 
-    <section class="skills-icons">
+    <section class="projects" id="projects">
+        <div class="projects-container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/project1.jpg" alt="Project 1">
+                    </div>
+                    <div class="project-content">
+                        <h3>Project Name 1</h3>
+                        <p>Brief description of your first project. Explain what problem it solves, what technologies you used, and what you learned from building it.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-btn" target="_blank">
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                GitHub
+                            </a>
+                            <a href="#" class="project-btn" target="_blank">
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+                                    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+                                </svg>
+                                Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/project2.jpg" alt="Project 2">
+                    </div>
+                    <div class="project-content">
+                        <h3>Project Name 2</h3>
+                        <p>Brief description of your second project. Highlight the key features, challenges you overcame, and the impact it had.</p>
+                        <div class="project-tags">
+                            <span class="tag">Java</span>
+                            <span class="tag">Android Studio</span>
+                            <span class="tag">Firebase</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-btn" target="_blank">
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                GitHub
+                            </a>
+                            <a href="#" class="project-btn" target="_blank">
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+                                    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+                                </svg>
+                                Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/project3.jpg" alt="Project 3">
+                    </div>
+                    <div class="project-content">
+                        <h3>Project Name 3</h3>
+                        <p>Brief description of your third project. Share what inspired you to build it and what makes it unique or valuable.</p>
+                        <div class="project-tags">
+                            <span class="tag">Tableau</span>
+                            <span class="tag">Power BI</span>
+                            <span class="tag">Data Analysis</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-btn" target="_blank">
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                GitHub
+                            </a>
+                            <a href="#" class="project-btn" target="_blank">
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+                                    <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/>
+                                </svg>
+                                Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="experience" id="experience">
+        <div class="experience-container">
+            <h2>Experience</h2>
+            <div class="experience-timeline">
+                <!-- Experience 1 -->
+                <div class="experience-item">
+                    <span class="experience-date">January 2023 - March 2023</span>
+                    <h3>Virtual Assistant - Social Media Manager</h3>
+                    <p class="experience-company">Ray Fitness Journey</p>
+                    <p>Handle Clients social media account and offer trainings for people who are interested to start their fitness journey</p>
+                    <ul>
+                        <li>Manage Scheduling with Customers</li>
+                        <li>Promote Clients work as a fitness intstructor</li>
+                        <li>Deliver Monthly report for</li>
+                    </ul>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="experience-item">
+                    <span class="experience-date">Month Year - Month Year</span>
+                    <h3>Job Title / Role</h3>
+                    <p class="experience-company">Company Name</p>
+                    <p>Brief description of your role and responsibilities. What did you accomplish? What technologies did you work with?</p>
+                    <ul>
+                        <li>Key achievement or responsibility #1</li>
+                        <li>Key achievement or responsibility #2</li>
+                        <li>Key achievement or responsibility #3</li>
+                    </ul>
+                </div>
+
+                <!-- Experience 3 -->
+                <div class="experience-item">
+                    <span class="experience-date">Month Year - Month Year</span>
+                    <h3>Job Title / Role</h3>
+                    <p class="experience-company">Company Name</p>
+                    <p>Brief description of your role and responsibilities. What did you accomplish? What technologies did you work with?</p>
+                    <ul>
+                        <li>Key achievement or responsibility #1</li>
+                        <li>Key achievement or responsibility #2</li>
+                        <li>Key achievement or responsibility #3</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills-icons" id="skills">
         <div class="skills-container">
             <h2>SKILLS</h2>
             <div class="icons-grid">
@@ -763,13 +1222,22 @@
             <div class="media-grid">
                 <div class="media-card">
                     <h3>📄 My Resume</h3>
-                    <p>Download my resume to learn more about my experience, education, and technical skills.</p>
-                    <a href="your-resume.pdf" class="resume-btn" download>
-                        <svg fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
-                        </svg>
-                        Download Resume
-                    </a>
+                    <p>View or download my resume to learn more about my experience, education, and technical skills.</p>
+                    <div class="resume-buttons">
+                        <a href="your-resume.pdf" class="resume-btn" target="_blank">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                            </svg>
+                            View Resume
+                        </a>
+                        <a href="your-resume.pdf" class="resume-btn" download>
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                            Download Resume
+                        </a>
+                    </div>
                 </div>
 
                 <div class="media-card">
@@ -796,10 +1264,10 @@
                 <h2>Contacts</h2>
             </div>
             <div class="contact-buttons">
-                <a href="https://www.linkedin.com/in/jonaxlarones" class="contact-btn">LinkedIn</a>
-                <a href="https://github.com/Nubamaa" class="contact-btn">GitHub</a>
-                <a href="mailto:axlarones@gmail.com" class="contact-btn">Gmail</a>
-                <a href="https://www.credly.com/users/jon-axl-arones.fddeff96" class="contact-btn">Credly</a>
+                <a href="https://www.linkedin.com/in/jonaxlarones" class="contact-btn" target="_blank">LinkedIn</a>
+                <a href="https://github.com/Nubamaa" class="contact-btn" target="_blank">GitHub</a>
+                <a href="mailto:axlarones@gmail.com" class="contact-btn">Email Me</a>
+                <a href="https://www.credly.com/users/jon-axl-arones.fddeff96" class="contact-btn" target="_blank">Credly</a>
             </div>
         </div>
     </section>
@@ -807,5 +1275,31 @@
     <footer class="footer">
         <p>&copy; 2024 Axlitoos. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Email functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailBtn = document.querySelector('a[href^="mailto"]');
+            
+            emailBtn.addEventListener('click', function(e) {
+                const email = 'axlarones@gmail.com';
+                
+                // Try to open mailto
+                window.location.href = 'mailto:' + email;
+                
+                // Also copy to clipboard as backup
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(email).then(function() {
+                        // Show a temporary notification
+                        const originalText = emailBtn.textContent;
+                        emailBtn.textContent = 'Email Copied!';
+                        setTimeout(function() {
+                            emailBtn.textContent = originalText;
+                        }, 2000);
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
